@@ -1,3 +1,10 @@
-line-bot-sdk==1.8.0
-flask==1.0.2
+line-bot-sdk
+flask
 gunicorn
+pymongo
+imgurpython
+requests
+numpy
+matplotlib
+twstock
+pandas
