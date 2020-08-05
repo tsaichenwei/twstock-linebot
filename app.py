@@ -111,8 +111,8 @@ def callback():
                 stock_rt['realtime']['accumulate_trade_volume'])
 
             stock = twstock.Stock(text)
-            content += '-----\n'
-            content += '最近五日價格: \n'
+            content += '-----------\n'
+            content += '近五日價格: \n'
             price5 = stock.price[-5:][::-1]
             date5 = stock.date[-5:][::-1]
             for i in range(len(price5)):
@@ -146,7 +146,7 @@ def callback():
                 preview_image_url=url
             )
             endtime = datetime.now() #結束時間
-            content += '執行時間: %s\n secs' %(endtime - starttime).seconds
+            content += '執行時間: %s\n秒' %(endtime - starttime).seconds
             message = [TextSendMessage(text=content),image_message]
 
             line_bot_api_8.reply_message(
