@@ -91,10 +91,19 @@ def callback():
         elif(text.startswith('#')):
             text = text[1:]
             content = ''
+            while 1:
+                try:
+                    stock_rt = twstock.realtime.get(text)
+                    my_datetime = datetime.fromtimestamp(stock_rt['timestamp']+8*60*60)
+                    my_time = my_datetime.strftime('%H:%M:%S')
+                except:
+                    print("Connection refused by the server..")
+                    print("Let me sleep for 5 seconds")
+                    print("ZZzzzz...")
+                    time.sleep(5)
+                    print("Was a nice sleep, now let me continue...")
+                    continue
 
-            stock_rt = twstock.realtime.get(text)
-            my_datetime = datetime.fromtimestamp(stock_rt['timestamp']+8*60*60)
-            my_time = my_datetime.strftime('%H:%M:%S')
 
             content += '%s (%s) %s\n' %(
                 stock_rt['info']['name'],
@@ -108,7 +117,7 @@ def callback():
                 stock_rt['realtime']['low'])
             content += '量: %s\n' %(stock_rt['realtime']['accumulate_trade_volume'])
 
-            stock = twstock.Stock(text)#twstock.Stock('2330')
+            stock = twstock.Stock(text)
             content += '-----\n'
             content += '最近五日價格: \n'
             price5 = stock.price[-5:][::-1]
