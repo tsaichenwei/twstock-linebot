@@ -125,7 +125,7 @@ def callback():
             df1 = pd.DataFrame.from_dict(my_data)
 
             df1.plot(x='date', y='close')
-            plt.title('Recently month Trend - %s(%s)' %(stock_rt['info']['name'],stock.sid))
+            plt.title('Recently month Trend - (%s)' %(stock.sid))
             plt.savefig(fn)
             plt.close()
 
