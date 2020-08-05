@@ -116,7 +116,7 @@ def callback():
             date5 = stock.date[-5:][::-1]
             for i in range(len(price5)):
                 #content += '[%s] %s\n' %(date5[i].strftime("%Y-%m-%d %H:%M:%S"), price5[i])
-                content += '[%s] %s\n' %(date5[i].strftime("%Y-%m-%d"), price5[i])
+                content += '[%s] %s\n' %(date5[i].strftime("%m/%d"), price5[i])
             
             
             fn = '%s.png' %(text)
@@ -125,7 +125,7 @@ def callback():
             df1 = pd.DataFrame.from_dict(my_data)
 
             df1.plot(x='date', y='close')
-            plt.title('Recently month Trend - '+'%s' %(stock.sid))
+            plt.title('Recently month Trend - %s(%s)' %(stock_rt['info']['name'],stock.sid))
             plt.savefig(fn)
             plt.close()
 
