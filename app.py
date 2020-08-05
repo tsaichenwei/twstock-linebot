@@ -144,16 +144,12 @@ def callback():
                 preview_image_url=url
             )
 
-            line_bot_api_8.reply_message(
-                event.reply_token,
-                TextSendMessage(text=content)
-                )
+            message = [TextSendMessage(text=content),image_message]
 
             line_bot_api_8.reply_message(
                 event.reply_token,
-                image_message
+                message
                 )
-
 
     return 'OK'
 
