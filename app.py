@@ -29,7 +29,7 @@ from linebot.models import *
 
 app = Flask(__name__)
 
-starttime = datetime.datetime.now() #開始計算時間
+starttime = datetime.now() #開始時間
 channel_secret = 'df238a4651956dfbe69672892873e128'
 channel_access_token = 'pV4jqGmGICVL0LDCcCrJu78uYCFP2DMFrvXcjlBfjGfYVwp/X622I1uCLwhXLfbgCTQX2X+Au+/pgiglmK08BGFWHiX0axVSA0uQFREUJYVeQBUkHEakp7WT5NmmROxic1ciDxiVfOz1X5uOLW4kIgdB04t89/1O/w1cDnyilFU='
 line_bot_api_8 = LineBotApi(channel_access_token)
@@ -145,8 +145,8 @@ def callback():
                 original_content_url=url,
                 preview_image_url=url
             )
-            endtime = datetime.datetime.now() #結束時間
-            content += '執行時間: %s\n secs' %(endtime - starttime)
+            endtime = datetime.now() #結束時間
+            content += '執行時間: %s\n secs' %(endtime - starttime).seconds
             message = [TextSendMessage(text=content),image_message]
 
             line_bot_api_8.reply_message(
