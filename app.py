@@ -29,7 +29,7 @@ from linebot.models import *
 
 app = Flask(__name__)
 
-
+starttime = datetime.datetime.now() #開始計算時間
 channel_secret = 'df238a4651956dfbe69672892873e128'
 channel_access_token = 'pV4jqGmGICVL0LDCcCrJu78uYCFP2DMFrvXcjlBfjGfYVwp/X622I1uCLwhXLfbgCTQX2X+Au+/pgiglmK08BGFWHiX0axVSA0uQFREUJYVeQBUkHEakp7WT5NmmROxic1ciDxiVfOz1X5uOLW4kIgdB04t89/1O/w1cDnyilFU='
 line_bot_api_8 = LineBotApi(channel_access_token)
@@ -88,7 +88,7 @@ def callback():
                 ]
             )
 
-        elif(text[0].isdigit() and len(text)==4 and text[3].isdigit()):
+        elif(text[0].isdigit()):
             #text = text[1:]
             content = ''
             stock_rt = twstock.realtime.get(text)
@@ -99,13 +99,16 @@ def callback():
                 stock_rt['info']['name'],
                 stock_rt['info']['code'],
                 my_time)
-            content += '現價: %s / 開盤: %s\n'%(
-                stock_rt['realtime']['latest_trade_price'],
+            content += '現價: %s\n'%(
+                stock_rt['realtime']['latest_trade_price'])
+            content += '開盤: %s\n'%(
                 stock_rt['realtime']['open'])
-            content += '最高: %s / 最低: %s\n' %(
-                stock_rt['realtime']['high'],
-                stock_rt['realtime']['low'])
-            content += '量: %s\n' %(stock_rt['realtime']['accumulate_trade_volume'])
+            content += '最高: %s\n' %(
+                stock_rt['realtime']['high'])
+            content += '最低: %s\n' %(
+                stock_rt['realtime']['low'])    
+            content += '成交量: %s\n' %(
+                stock_rt['realtime']['accumulate_trade_volume'])
 
             stock = twstock.Stock(text)
             content += '-----\n'
@@ -142,7 +145,8 @@ def callback():
                 original_content_url=url,
                 preview_image_url=url
             )
-
+            endtime = datetime.datetime.now() #結束時間
+            content += '執行時間: %s\n secs' %(endtime - starttime)
             message = [TextSendMessage(text=content),image_message]
 
             line_bot_api_8.reply_message(
