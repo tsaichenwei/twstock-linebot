@@ -29,7 +29,6 @@ from linebot.models import *
 
 app = Flask(__name__)
 
-starttime = datetime.now() #開始時間
 channel_secret = 'df238a4651956dfbe69672892873e128'
 channel_access_token = 'pV4jqGmGICVL0LDCcCrJu78uYCFP2DMFrvXcjlBfjGfYVwp/X622I1uCLwhXLfbgCTQX2X+Au+/pgiglmK08BGFWHiX0axVSA0uQFREUJYVeQBUkHEakp7WT5NmmROxic1ciDxiVfOz1X5uOLW4kIgdB04t89/1O/w1cDnyilFU='
 line_bot_api_8 = LineBotApi(channel_access_token)
@@ -89,7 +88,7 @@ def callback():
             )
 
         elif(text[0].isdigit()):
-            #text = text[1:]
+            starttime = datetime.now() #開始時間
             content = ''
             stock_rt = twstock.realtime.get(text)
             my_datetime = datetime.fromtimestamp(stock_rt['timestamp']+8*60*60)
@@ -146,7 +145,7 @@ def callback():
                 preview_image_url=url
             )
             endtime = datetime.now() #結束時間
-            content += '執行時間: %s\n秒' %(endtime - starttime).seconds
+            content += '執行時間: %s 秒' %(endtime - starttime).seconds
             message = [TextSendMessage(text=content),image_message]
 
             line_bot_api_8.reply_message(
