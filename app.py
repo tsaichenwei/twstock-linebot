@@ -135,8 +135,8 @@ def callback():
 
             # -- upload
             # imgur with account: your.mail@gmail.com
-            client_id = 'your imgur client_id'
-            client_secret = 'your imgur client_secret'
+            client_id = '7d84572e7929b92'
+            client_secret = 'ac1bfa14c1a2cdcff4169b51bf7b080a46b1d625'
 
             client = ImgurClient(client_id, client_secret)
             print("Uploading image... ")
