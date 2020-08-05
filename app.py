@@ -124,7 +124,7 @@ def callback():
             df1 = pd.DataFrame.from_dict(my_data)
 
             df1.plot(x='date', y='close')
-            plt.title('%s' %(stock.sid) + '近一個月走勢')
+            plt.title('%s' %(stock.sid) + '- Recently month Trend')
             plt.savefig(fn)
             plt.close()
 
@@ -146,7 +146,7 @@ def callback():
 
             line_bot_api_8.reply_message(
                 event.reply_token,
-                TextSendMessage(text=content),
+#                TextSendMessage(text=content),
                 image_message
                 )
 
