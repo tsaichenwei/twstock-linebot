@@ -88,8 +88,8 @@ def callback():
                 ]
             )
 
-        elif(text.startswith('#')):
-            text = text[1:]
+        elif(text[0].isdigit() and len(text)==4 and text[3].isdigit()):
+            #text = text[1:]
             content = ''
             stock_rt = twstock.realtime.get(text)
             my_datetime = datetime.fromtimestamp(stock_rt['timestamp']+8*60*60)
