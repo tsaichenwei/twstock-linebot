@@ -151,7 +151,7 @@ def callback():
 
             line_bot_api_8.reply_message(
                 event.reply_token,
-                message
+                TextSendMessage(text=content)
                 )
 
     return 'OK'
