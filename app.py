@@ -29,9 +29,10 @@ from linebot.models import *
 
 app = Flask(__name__)
 
-channel_secret = 'df238a4651956dfbe69672892873e128'
-channel_access_token = 'pV4jqGmGICVL0LDCcCrJu78uYCFP2DMFrvXcjlBfjGfYVwp/X622I1uCLwhXLfbgCTQX2X+Au+/pgiglmK08BGFWHiX0axVSA0uQFREUJYVeQBUkHEakp7WT5NmmROxic1ciDxiVfOz1X5uOLW4kIgdB04t89/1O/w1cDnyilFU='
+channel_secret = '4d0db223fb0a9475999474e10336f516'
+channel_access_token = 'gHgXHeiQIjDvB6GPMZj+RT6OaE1Yl/dDdfUsStqZh6aqrtWtPhrM5IJX5xdq5HjwngMghdli3XkCU1YcGleF78Wdrm/AFpgzAII3h5HoiaaXVflS4PAm9ytWRW0xAMP8r1ZO7ROFen+F+F265rzQOAdB04t89/1O/w1cDnyilFU='
 line_bot_api_8 = LineBotApi(channel_access_token)
+
 parser_8 = WebhookParser(channel_secret)
 
 
